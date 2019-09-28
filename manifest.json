@@ -1,7 +1,7 @@
 {
     "name": "Booble",
     "version": "0.1",
-    "description": "Upgrades the Google homepage",
+    "description": "Upgrades the Google seaerch page",
     "manifest_version": 2,
     "web_accessible_resources": ["*.png"],
     "icons": {
