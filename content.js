@@ -26,7 +26,6 @@ img_hplogo.removeAttribute("height");
 img_hplogo.width = 400;
 img_hplogo.style = "margin-left: 22px";
 
-
 // Create link element to my site
 let a_mysite = document.createElement("a");
 a_mysite.href = siteURL;
@@ -36,5 +35,4 @@ a_mysite.target = "_blank";
 a_mysite.appendChild(img_hplogo.cloneNode(true));
 img_hplogo.parentNode.replaceChild(a_mysite, img_hplogo);
 
-// TODO color-in the top of Chikka's head
-// TODO fix for non-standard homepages
+// TODO check for holiday page and change accordingly
