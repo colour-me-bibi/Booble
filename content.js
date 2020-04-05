@@ -1,38 +1,30 @@
+/*
+TODOs
+    Change the image, retain attributes
+    Change image height to be porportional to the width of the searchbar
+    Change the manifest to include any google page
+*/
+
 const localImageURI = chrome.extension.getURL("images/booble.png");
 const siteURL = "https://melancholicredux.co";
 
-// Get elements to modify
-let div_lga = document.getElementById("lga");
-let img_hplogo = document.getElementById("hplogo");
-let div_searchform = document.getElementById("searchform");
-let div_main = document.getElementById("main");
-let searchButton = document.querySelectorAll('input[value="Google Search"]')[1];
-let luckyButton = document.querySelectorAll('input[value="I\'m Feeling Lucky"]')[1];
+document.getElementById('searchform').style = "margin-top: 120px";
 
-// Change the search buttons' text
-searchButton.value = "Booble Search";
-luckyButton.value = "I'm Feeling Perky";
+const hp_logo = document.getElementById('hplogo');
 
-// Adjust main container elements' formatting
-div_lga.style = "height: auto";
-div_main.style = "height: auto";
-div_searchform.style = "margin-top: 70px";
+if (hp_logo.hasChildNodes()) { // it's a google event
+    const main_image_link = document.querySelector("#hplogo a");
+    const main_image = document.querySelector("#hplogo img");
 
-// Modify img_hplogo to fit the new image
-img_hplogo.src = localImageURI;
-img_hplogo.title = "Anime Tiddies XD";
-img_hplogo.removeAttribute("srcset");
-img_hplogo.removeAttribute("height");
-img_hplogo.width = 400;
-img_hplogo.style = "margin-left: 22px";
+    main_image_link.href = siteURL;
+    main_image_link.target = "_blank";
+    main_image.src = localImageURI;
+    main_image.alt = "Anime Tiddies XD";
+    main_image.title = "Anime Tiddies XD";
+    main_image.height = main_image.width;
+} else { // it's a regular google search page
+    // TODO create image wrapped in a link and innsert it into hplogo div, probably...
+}
 
-// Create link element to my site
-let a_mysite = document.createElement("a");
-a_mysite.href = siteURL;
-a_mysite.target = "_blank";
-
-// Wrap img_hplogo in a_mysite element
-a_mysite.appendChild(img_hplogo.cloneNode(true));
-img_hplogo.parentNode.replaceChild(a_mysite, img_hplogo);
-
-// TODO check for holiday page and change accordingly
+document.querySelectorAll('input[value="Google Search"]')[1].value = "Booble Search";
+document.querySelectorAll('input[value="I\'m Feeling Lucky"]')[1].value = "I'm Feeling Perky";
